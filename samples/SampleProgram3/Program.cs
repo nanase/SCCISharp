@@ -15,10 +15,6 @@ namespace SampleProgram3
             using (var manager = SoundInterfaceManager.GetInstance())
             {
                 manager.Reset();
-
-                if (!CheckConfigFile(manager))
-                    manager.ShowConfig();
-
                 manager.SetAcquisitionMode(AcquisitionMode.Near);
 
                 if (!manager.TryGetSoundChip(out chip, ChipType.YM2608, 8.0))
@@ -39,18 +35,6 @@ namespace SampleProgram3
                     manager.CloseLevelDisplay();
                 }
             }
-        }
-
-        static bool CheckConfigFile(SoundInterfaceManager manager)
-        {
-            if (manager.InterfaceCount > 0)
-                using (var inf = manager.GetInterface(0))
-                    for (int i = 0, j = inf.SoundChipCount; i < j; i++)
-                        using (var chip = inf.GetSoundChip(i))
-                            if (chip.GetInfo().Type != ChipType.None)
-                                return true;
-
-            return false;
         }
 
         static void Play()

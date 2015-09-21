@@ -10,10 +10,6 @@ namespace SampleProgram2
             using (var manager = SoundInterfaceManager.GetInstance())
             {
                 manager.Reset();
-
-                if (!CheckConfigFile(manager))
-                    manager.ShowConfig();
-
                 manager.SetAcquisitionMode(AcquisitionMode.Near);
 
                 SoundChip chip;
@@ -54,18 +50,6 @@ namespace SampleProgram2
                     Console.ReadKey(true);
                 }
             }
-        }
-
-        static bool CheckConfigFile(SoundInterfaceManager manager)
-        {
-            if (manager.InterfaceCount > 0)
-                using (var inf = manager.GetInterface(0))
-                    for (int i = 0, j = inf.SoundChipCount; i < j; i++)
-                        using (var chip = inf.GetSoundChip(i))
-                            if (chip.GetInfo().Type != ChipType.None)
-                                return true;
-
-            return false;
         }
     }
 }

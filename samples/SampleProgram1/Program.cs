@@ -11,24 +11,8 @@ namespace SampleProgram1
             using (var manager = SoundInterfaceManager.GetInstance())
             {
                 manager.Reset();
-
-                if (!CheckConfigFile(manager))
-                    manager.ShowConfig();
-
                 DumpInterfaceManager(manager);
             }
-        }
-
-        static bool CheckConfigFile(SoundInterfaceManager manager)
-        {
-            if (manager.InterfaceCount > 0)
-                using (var inf = manager.GetInterface(0))
-                    for (int i = 0, j = inf.SoundChipCount; i < j; i++)
-                        using (var chip = inf.GetSoundChip(i))
-                            if (chip.GetInfo().Type != ChipType.None)
-                                return true;
-
-            return false;
         }
 
         static void DumpInterfaceManager(SoundInterfaceManager manager)
