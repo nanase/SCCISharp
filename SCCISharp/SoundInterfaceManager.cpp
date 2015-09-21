@@ -81,12 +81,6 @@ namespace SCCISharp {
 		return this->isDisposed;
 	}
 
-	bool SCCISharp::SoundInterfaceManager::ShowConfig()
-	{
-		this->CheckDisposed();
-		return !!manager->config();
-	}
-
 	void SCCISharp::SoundInterfaceManager::ShowLevelDisplay()
 	{
 		this->CheckDisposed();

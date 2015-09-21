@@ -305,12 +305,6 @@ namespace SCCISharp {
 		bool ReleaseAllSoundChips();
 
 		/// <summary>
-		/// 設定ウィンドウを表示します。
-		/// </summary>
-		/// <returns>表示に成功したとき true、それ以外のとき false。</returns>
-		bool ShowConfig();
-
-		/// <summary>
 		/// レベルディスプレイを表示します。
 		/// </summary>
 		void ShowLevelDisplay();
