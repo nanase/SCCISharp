@@ -16,7 +16,7 @@ typedef struct {
 	int		iSoundChip;					// Sound Chip ID
 	int		iCompatibleSoundChip[2];	// Compatible Sound Chip ID
 	DWORD	dClock;						// Sound Chip clock
-	DWORD	dCompatibleColock[2];		// Sound Chip clock
+	DWORD	dCompatibleClock[2];		// Sound Chip clock
 	BOOL	bIsUsed;					// Sound Chip Used Check
 	DWORD	dBusID;						// 接続バスID
 	DWORD	dSoundLocation;				// サウンドロケーション
@@ -62,6 +62,7 @@ public:
 	// Sound Interface instance release
 	virtual BOOL __stdcall releaseInstance() = 0;
 	// config scci
+	// !!!this function is scciconfig exclusive use!!!
 	virtual BOOL __stdcall config() = 0;
 	// get version info
 	virtual DWORD __stdcall getVersion(DWORD *pMVersion = NULL) = 0;
