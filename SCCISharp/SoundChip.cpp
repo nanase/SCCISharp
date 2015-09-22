@@ -63,7 +63,7 @@ namespace SCCISharp {
 		SCCI_SOUND_CHIP_INFO* cinfo = ((::SoundChip*)this->soundChip)->getSoundChipInfo();
 
 		size_t compSChip_num = sizeof(cinfo->iCompatibleSoundChip) / sizeof(cinfo->iCompatibleSoundChip[0]);
-		size_t compClock_num = sizeof(cinfo->dCompatibleColock) / sizeof(cinfo->dCompatibleColock[0]);
+		size_t compClock_num = sizeof(cinfo->dCompatibleClock) / sizeof(cinfo->dCompatibleClock[0]);
 
 		array<ChipType>^ compatibleChip = gcnew array<ChipType>(compSChip_num);
 		array<Int32>^ compatibleClock = gcnew array<Int32>(compClock_num);
@@ -72,7 +72,7 @@ namespace SCCISharp {
 			compatibleChip[i] = (ChipType)cinfo->iCompatibleSoundChip[i];
 
 		for (size_t i = 0; i < compClock_num; i++)
-			compatibleClock[i] = (Int32)cinfo->dCompatibleColock[i];
+			compatibleClock[i] = (Int32)cinfo->dCompatibleClock[i];
 
 		return gcnew SoundChipInfo(
 			gcnew String(cinfo->cSoundChipName),
