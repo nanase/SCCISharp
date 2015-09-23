@@ -1,7 +1,5 @@
 ﻿# SCCISharp
 
-----
-
 ## 概要
 
 SCCISharp は [SCCI](http://www.pyonpyon.jp/~gasshi/fm/) を C# などから扱えるようにしたバインド/ラッパライブラリです。
