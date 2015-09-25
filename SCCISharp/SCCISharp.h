@@ -373,11 +373,8 @@ namespace SCCISharp {
 		!SoundInterfaceManager();
 		void CheckDisposed();
 
-		ref class SoundInterfaceManagerHolder
-		{
-		public:
-			static initonly SoundInterfaceManager^ instance = gcnew SoundInterfaceManager();
-		};
+		static initonly Object^ lockObject = gcnew Object();
+		static SoundInterfaceManager^ instance = nullptr;
 	};
 
 	/// <summary>

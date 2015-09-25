@@ -11,6 +11,19 @@ static void initialize();
 namespace SCCISharp {
 
 	using namespace System;
+	using namespace System::Threading;
+
+	SoundInterfaceManager^ SCCISharp::SoundInterfaceManager::GetInstance()
+	{
+		Monitor::Enter(SoundInterfaceManager::lockObject);
+
+		if (SoundInterfaceManager::instance == nullptr)
+			SoundInterfaceManager::instance = gcnew SoundInterfaceManager();
+
+		Monitor::Exit(SoundInterfaceManager::lockObject);
+
+		return SoundInterfaceManager::instance;
+	}
 
 	SCCISharp::SoundInterfaceManager::SoundInterfaceManager()
 	{
@@ -34,12 +47,18 @@ namespace SCCISharp {
 		if (this->isDisposed)
 			return;
 
+		Monitor::Enter(SoundInterfaceManager::lockObject);
+
 		this->isDisposed = true;
 
 		// Dispose unmanaged resources
 		manager->releaseInstance();
 		::FreeLibrary(hDll);
 		hDll = NULL;
+
+		SoundInterfaceManager::instance = nullptr;
+
+		Monitor::Exit(SoundInterfaceManager::lockObject);
 	}
 
 	Int32 SCCISharp::SoundInterfaceManager::Version::get()
@@ -282,12 +301,6 @@ namespace SCCISharp {
 		if (this->isDisposed)
 			throw gcnew ObjectDisposedException("SoundInterfaceManager");
 	}
-
-	SoundInterfaceManager^ SCCISharp::SoundInterfaceManager::GetInstance()
-	{
-		return SoundInterfaceManagerHolder::instance;
-	}
-
 }
 
 using namespace System;
