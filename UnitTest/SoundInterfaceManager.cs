@@ -21,6 +21,8 @@ namespace UnitTest
 
             Assert.IsNotNull(manager3);
             Assert.AreNotSame(manager1, manager3);
+
+            manager3.Dispose();
         }
     }
 }
