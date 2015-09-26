@@ -56,6 +56,11 @@ namespace SCCISharp {
 		return this->isDisposed;
 	}
 
+	IntPtr SCCISharp::SoundChip::Pointer::get()
+	{
+		return IntPtr(this->soundChip);
+	}
+
 	SoundChipInfo^ SCCISharp::SoundChip::GetInfo()
 	{
 		this->CheckDisposed();

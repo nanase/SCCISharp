@@ -69,6 +69,11 @@ namespace SCCISharp {
 		return this->isDisposed;
 	}
 
+	IntPtr SCCISharp::SoundInterface::Pointer::get()
+	{
+		return IntPtr(this->soundInterface);
+	}
+
 	bool SCCISharp::SoundInterface::SendData(array<Byte>^ data, Int32 offset, Int32 length)
 	{
 		this->CheckDisposed();

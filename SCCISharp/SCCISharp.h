@@ -410,6 +410,12 @@ namespace SCCISharp {
 		property bool IsDisposed { bool get(); }
 
 		/// <summary>
+		/// このオブジェクトに割り当てられているポインタの値を取得します。
+		/// </summary>
+		/// <value>割り当てられているポインタの値。</value>
+		property IntPtr Pointer { IntPtr get(); }
+
+		/// <summary>
 		/// 指定された配列をインタフェースに送信します。
 		/// </summary>
 		/// <param name="data">送信されるバイト列が格納された <see cref="System::Byte"/> の配列。</param>
@@ -485,6 +491,12 @@ namespace SCCISharp {
 		/// </summary>
 		/// <value>解放されているとき true、それ以外のとき false。</value>
 		property bool IsDisposed { bool get(); }
+
+		/// <summary>
+		/// このオブジェクトに割り当てられているポインタの値を取得します。
+		/// </summary>
+		/// <value>割り当てられているポインタの値。</value>
+		property IntPtr Pointer { IntPtr get(); }
 
 		/// <summary>
 		/// チップの現在の状態を格納した <see cref="SCCISharp::SoundChipInfo"/> オブジェクトを取得します。
