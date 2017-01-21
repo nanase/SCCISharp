@@ -10,7 +10,7 @@ namespace SampleProgram3
         private static SoundChip chip;
         private static volatile bool reqEnd = false;
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             using (var manager = SoundInterfaceManager.GetInstance())
             {

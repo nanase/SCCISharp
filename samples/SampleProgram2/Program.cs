@@ -5,7 +5,7 @@ namespace SampleProgram2
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             using (var manager = SoundInterfaceManager.GetInstance())
             {
