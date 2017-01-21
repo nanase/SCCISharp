@@ -7,8 +7,8 @@ namespace SampleProgram3
 {
     internal class Program
     {
-        private static SoundChip chip;
-        private static volatile bool reqEnd = false;
+        private static SoundChip _chip;
+        private static volatile bool _requiredEnd = false;
 
         private static void Main()
         {
@@ -17,19 +17,19 @@ namespace SampleProgram3
                 manager.Reset();
                 manager.SetAcquisitionMode(AcquisitionMode.Near);
 
-                if (!manager.TryGetSoundChip(out chip, ChipType.YM2608, 8.0))
+                if (!manager.TryGetSoundChip(out _chip, ChipType.YM2608, 8.0))
                 {
                     Console.Error.WriteLine("このサンプルでは {0} が必要です。", ChipType.YM2608);
                     return;
                 }
 
-                using (chip)
+                using (_chip)
                 {
                     manager.ShowLevelDisplay();
 
                     var task = Task.Run((Action)Play);
                     Console.ReadKey(true);
-                    reqEnd = true;
+                    _requiredEnd = true;
                     task.Wait();
 
                     manager.CloseLevelDisplay();
@@ -39,14 +39,14 @@ namespace SampleProgram3
 
         private static void Play()
         {
-            chip.SetRegister(0x11, 0x3f);
+            _chip.SetRegister(0x11, 0x3f);
 
-            chip.SetRegister(0x18, 0xcf);
-            chip.SetRegister(0x19, 0xcf);
-            chip.SetRegister(0x1a, 0xcf);
-            chip.SetRegister(0x1b, 0xcf);
-            chip.SetRegister(0x1c, 0xcf);
-            chip.SetRegister(0x1d, 0xcf);
+            _chip.SetRegister(0x18, 0xcf);
+            _chip.SetRegister(0x19, 0xcf);
+            _chip.SetRegister(0x1a, 0xcf);
+            _chip.SetRegister(0x1b, 0xcf);
+            _chip.SetRegister(0x1c, 0xcf);
+            _chip.SetRegister(0x1d, 0xcf);
 
             const int BD = 1, SD = 2, TOP = 4, HH = 8, TOM = 16/*, RIM = 32*/;
 
@@ -92,11 +92,11 @@ namespace SampleProgram3
             {
                 for (int i = 0; i < score.Length; i++)
                 {
-                    if (reqEnd)
+                    if (_requiredEnd)
                         return;
 
                     if (score[i] != 0)
-                        chip.SetRegister(0x10, score[i]);
+                        _chip.SetRegister(0x10, score[i]);
 
                     Thread.Sleep(125);
                 }
