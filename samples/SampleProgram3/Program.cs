@@ -90,13 +90,13 @@ namespace SampleProgram3
 
             while (true)
             {
-                for (var i = 0; i < score.Length; i++)
+                foreach (var data in score)
                 {
                     if (_requiredEnd)
                         return;
 
-                    if (score[i] != 0)
-                        _chip.SetRegister(0x10, score[i]);
+                    if (data != 0)
+                        _chip.SetRegister(0x10, data);
 
                     Thread.Sleep(125);
                 }
