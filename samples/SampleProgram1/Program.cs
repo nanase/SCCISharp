@@ -22,7 +22,7 @@ namespace SampleProgram1
 
             var interfaceCount = manager.InterfaceCount;
 
-            for (int i = 0; i < interfaceCount; i++)
+            for (var i = 0; i < interfaceCount; i++)
             {
                 using (var soundInterface = manager.GetInterface(i))
                     DumpInterface(soundInterface, manager.GetInterfaceInfo(i), i);
@@ -38,7 +38,7 @@ namespace SampleProgram1
 
             var chipCount = soundInterface.SoundChipCount;
 
-            for (int i = 0; i < chipCount; i++)
+            for (var i = 0; i < chipCount; i++)
             {
                 using (var chip = soundInterface.GetSoundChip(i))
                     DumpChip(chip, i);

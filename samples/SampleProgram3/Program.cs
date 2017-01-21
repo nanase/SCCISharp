@@ -50,7 +50,7 @@ namespace SampleProgram3
 
             const int bd = 1, sd = 2, top = 4, hh = 8, tom = 16/*, rim = 32*/;
 
-            var score = new int[] {
+            var score = new[] {
                         top | bd,   0,
                         hh,         0,
                         hh | sd,    0,
@@ -90,7 +90,7 @@ namespace SampleProgram3
 
             while (true)
             {
-                for (int i = 0; i < score.Length; i++)
+                for (var i = 0; i < score.Length; i++)
                 {
                     if (_requiredEnd)
                         return;
