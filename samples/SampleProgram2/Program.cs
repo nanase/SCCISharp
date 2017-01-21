@@ -3,9 +3,9 @@ using SCCISharp;
 
 namespace SampleProgram2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var manager = SoundInterfaceManager.GetInstance())
             {

@@ -4,9 +4,9 @@ using SCCISharp;
 
 namespace SampleProgram1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var manager = SoundInterfaceManager.GetInstance())
             {
@@ -15,7 +15,7 @@ namespace SampleProgram1
             }
         }
 
-        static void DumpInterfaceManager(SoundInterfaceManager manager)
+        private static void DumpInterfaceManager(SoundInterfaceManager manager)
         {
             Console.WriteLine("SCCI Version: {0}", manager.Version);
             Console.WriteLine("Interface Count: {0}", manager.InterfaceCount);
@@ -29,7 +29,7 @@ namespace SampleProgram1
             }
         }
 
-        static void DumpInterface(SoundInterface soundInterface, InterfaceInfo info, int number)
+        private static void DumpInterface(SoundInterface soundInterface, InterfaceInfo info, int number)
         {
             Console.WriteLine("\t#{0} [{1}] ----------", number, info.Name);
             Console.WriteLine("\tDelay: {0} ms", soundInterface.Delay);
@@ -47,7 +47,7 @@ namespace SampleProgram1
             Console.WriteLine();
         }
 
-        static void DumpChip(SoundChip chip, int number)
+        private static void DumpChip(SoundChip chip, int number)
         {
             var info = chip.GetInfo();
 

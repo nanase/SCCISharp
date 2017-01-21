@@ -5,12 +5,12 @@ using SCCISharp;
 
 namespace SampleProgram3
 {
-    class Program
+    internal class Program
     {
-        static SoundChip chip;
-        static volatile bool reqEnd = false;
+        private static SoundChip chip;
+        private static volatile bool reqEnd = false;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (var manager = SoundInterfaceManager.GetInstance())
             {
@@ -37,7 +37,7 @@ namespace SampleProgram3
             }
         }
 
-        static void Play()
+        private static void Play()
         {
             chip.SetRegister(0x11, 0x3f);
 
