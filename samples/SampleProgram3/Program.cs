@@ -8,7 +8,7 @@ namespace SampleProgram3
     internal class Program
     {
         private static SoundChip _chip;
-        private static volatile bool _requiredEnd = false;
+        private static volatile bool _requiredEnd;
 
         private static void Main()
         {
