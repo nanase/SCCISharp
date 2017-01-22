@@ -56,7 +56,7 @@ namespace SampleProgram1
             Console.WriteLine("\t\tSlot: {0}", info.Slot);
             Console.WriteLine("\t\tLocation: {0}", info.SoundLocation);
 
-            var compatible = info.CompatibleChipType.Zip(info.CompatibleChipClock, (t, c) => string.Format("{0} ({1} Hz)", t, c));
+            var compatible = info.CompatibleChipType.Zip(info.CompatibleChipClock, (t, c) => $"{t} ({c} Hz)");
             Console.WriteLine("\t\tCompatible: {0}", string.Join(", ", compatible));
             Console.WriteLine("\t\tUsed: {0}", info.IsUsed);
 
