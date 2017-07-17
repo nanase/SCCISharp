@@ -100,7 +100,10 @@ namespace SCCISharp {
 		if (data < 0)
 			throw gcnew ArgumentOutOfRangeException("data");
 
-		return !!((::SoundChip*)this->soundChip)->setRegister(address, data);
+		bool result = !!((::SoundChip*)this->soundChip)->setRegister(address, data);
+		this->OnSetRegister(this, gcnew SCCISharp::SetRegisterEventArgs(address, data));
+
+		return result;
 	}
 
 	Int32 SCCISharp::SoundChip::GetRegister(Int32 address)

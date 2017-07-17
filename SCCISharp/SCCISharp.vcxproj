@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="InterfaceInfo.cpp" />
+    <ClCompile Include="SetRegisterEventArgs.cpp" />
     <ClCompile Include="SoundChip.cpp" />
     <ClCompile Include="SoundChipInfo.cpp" />
     <ClCompile Include="SoundInterface.cpp" />

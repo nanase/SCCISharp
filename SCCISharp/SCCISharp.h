@@ -467,6 +467,36 @@ namespace SCCISharp {
 	};
 
 	/// <summary>
+	/// レジスタにデータ書き込まれたときに発生するイベントハンドラの引数を格納します。
+	/// </summary>
+	public ref class SetRegisterEventArgs : EventArgs
+	{
+	public:
+		/// <summary>
+		/// レジスタのアドレスを表す整数値を取得します。
+		/// </summary>
+		/// <value>レジスタのアドレスを表す 0 以上の整数値。</value>
+		property int Address { int get(); }
+
+		/// <summary>
+		/// レジスタに書き込まれるデータの値を取得します。
+		/// </summary>
+		/// <value>レジスタに書き込まれるデータの値。</value>
+		property int Data { int get(); }
+
+		/// <summary>
+		/// アドレスとデータを使って <see cref="SCCISharp::SetRegisterEventArgs"/> クラスのインスタンスを初期化しました。
+		/// </summary>
+		/// <param name="address">レジスタのアドレスを表す 0 以上の数値。</param>
+		/// <param name="data">書き込まれるデータ。</param>
+		SetRegisterEventArgs(int address, int data);
+
+	private:
+		int address;
+		int data;
+	};
+
+	/// <summary>
 	/// チップの機能をカプセル化したクラスです。
 	/// </summary>
 	public ref class SoundChip : IDisposable
@@ -524,6 +554,11 @@ namespace SCCISharp {
 		/// </summary>
 		/// <returns>初期化に成功したとき true、それ以外のとき false。</returns>
 		bool Initialize();
+
+		/// <summary>
+		/// レジスタにデータ書き込まれたときに発生します。
+		/// </summary>
+		event EventHandler<SetRegisterEventArgs^>^ OnSetRegister;
 
 	internal:
 		SoundChip(SoundInterfaceManager^ manager, void* soundChip);
