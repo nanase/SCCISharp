@@ -44,11 +44,13 @@ ipch/
 *.ncb
 *.opensdf
 *.sdf
+.vc/
 
 # Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
+.vs/
 
 # Guidance Automation Toolkit
 *.gpState
@@ -101,6 +103,7 @@ ClientBin
 ~$*
 *.dbmdl
 Generated_Code #added for RIA/Silverlight projects
+*.VC.db*
 
 # Backup & report files from converting an old project file to a newer
 # Visual Studio version. Backup files are not needed, because we have git ;-)
